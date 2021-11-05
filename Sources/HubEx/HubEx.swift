@@ -62,8 +62,8 @@ struct File: Identifiable, Codable {
 
 
 
-struct User: Identifiable, Codable {
-    var id: Int
+public struct User: Identifiable, Codable {
+    public var id: Int
     var jwt: String
     var firstname: String
     var lastname: String
@@ -126,7 +126,7 @@ public struct HubEx {
     let strapiDev = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
     var strapi = Strapi(host: "")
     
-    enum Server{
+    public enum Server{
         case prod
         case dev
     }
@@ -563,15 +563,15 @@ public struct HubExLoginUI:View {
     var com:(User) -> () = {_ in}
     var server : HubEx.Server = .prod
     
-    init(server : HubEx.Server, com: @escaping(User) -> Void){
+    public init(server : HubEx.Server, com: @escaping(User) -> Void){
         self.server = server
         self.com = com
     }
-    init(com: @escaping(User) -> Void){
+    public init(com: @escaping(User) -> Void){
         self.com = com
     }
     
-    init(server : HubEx.Server){
+    public init(server : HubEx.Server){
         self.server = server
     }
     
@@ -583,7 +583,6 @@ public struct HubExLoginUI:View {
                 TextField("Identifiant: ", text: $id)
                 TextField("Mot de passe: ", text: $mdp)
                 Button {
-//                    login(id,mdp)
                     HubEx(server).login(id, mdp) { user in
                         print("HubEx login \(user)")
                         com(user)
