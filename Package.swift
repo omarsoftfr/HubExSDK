@@ -21,11 +21,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "HubEx",
-            dependencies: [],
-            linkerSettings: [
-//                .linkedFramework("StrapiSwift")
-                    .unsafeFlags(["-F/Users/sebastienfilaumart/Downloads/HubEx/Sources/HubEx/StrapiSwift"])
-            ]),
+            dependencies: []),
         
         .testTarget(
             name: "HubExTests",
