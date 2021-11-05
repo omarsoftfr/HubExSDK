@@ -71,7 +71,7 @@ public class Location : NSObject, NSCoding, Identifiable, Codable{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         adress = aDecoder.decodeObject(forKey: "adress") as? String
         createdAt = aDecoder.decodeObject(forKey: "created_at") as? String
@@ -87,7 +87,7 @@ public class Location : NSObject, NSCoding, Identifiable, Codable{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if adress != nil{
             aCoder.encode(adress, forKey: "adress")

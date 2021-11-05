@@ -59,7 +59,7 @@ public class Format : NSObject, NSCoding{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         large = aDecoder.decodeObject(forKey: "large") as? Large
         medium = aDecoder.decodeObject(forKey: "medium") as? Medium
@@ -71,7 +71,7 @@ public class Format : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if large != nil{
             aCoder.encode(large, forKey: "large")
@@ -87,16 +87,16 @@ public class Format : NSObject, NSCoding{
         }
     }
 }
-class Thumbnail : NSObject, NSCoding{
+public class Thumbnail : NSObject, NSCoding{
 
-    var ext : String!
-    var height : Int!
-    var mime : String!
-    var name : String!
-    var path : AnyObject!
-    var size : Float!
-    var url : String!
-    var width : Int!
+    public var ext : String!
+    public var height : Int!
+    public var mime : String!
+    public var name : String!
+    public var path : AnyObject!
+    public var size : Float!
+    public var url : String!
+    public var width : Int!
 
 
     /**
@@ -150,7 +150,7 @@ class Thumbnail : NSObject, NSCoding{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         ext = aDecoder.decodeObject(forKey: "ext") as? String
         height = aDecoder.decodeObject(forKey: "height") as? Int
@@ -166,7 +166,7 @@ class Thumbnail : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if ext != nil{
             aCoder.encode(ext, forKey: "ext")
@@ -195,17 +195,17 @@ class Thumbnail : NSObject, NSCoding{
     }
 }
 
-class Small : NSObject, NSCoding{
+public class Small : NSObject, NSCoding{
 
-    var ext : String!
+    public var ext : String!
 //    var hash : String!
-    var height : Int!
-    var mime : String!
-    var name : String!
-    var path : AnyObject!
-    var size : Float!
-    var url : String!
-    var width : Int!
+    public var height : Int!
+    public var mime : String!
+    public var name : String!
+    public var path : AnyObject!
+    public var size : Float!
+    public var url : String!
+    public var width : Int!
 
 
     /**
@@ -262,7 +262,7 @@ class Small : NSObject, NSCoding{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         ext = aDecoder.decodeObject(forKey: "ext") as? String
         height = aDecoder.decodeObject(forKey: "height") as? Int
@@ -278,7 +278,7 @@ class Small : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if ext != nil{
             aCoder.encode(ext, forKey: "ext")
@@ -310,17 +310,17 @@ class Small : NSObject, NSCoding{
     }
 }
 
-class Medium : NSObject, NSCoding{
+public class Medium : NSObject, NSCoding{
 
-    var ext : String!
+    public var ext : String!
 //    var hash : String!
-    var height : Int!
-    var mime : String!
-    var name : String!
-    var path : AnyObject!
-    var size : Float!
-    var url : String!
-    var width : Int!
+    public var height : Int!
+    public var mime : String!
+    public var name : String!
+    public var path : AnyObject!
+    public var size : Float!
+    public var url : String!
+    public var width : Int!
 
 
     /**
@@ -374,7 +374,7 @@ class Medium : NSObject, NSCoding{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         ext = aDecoder.decodeObject(forKey: "ext") as? String
         height = aDecoder.decodeObject(forKey: "height") as? Int
@@ -390,7 +390,7 @@ class Medium : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if ext != nil{
             aCoder.encode(ext, forKey: "ext")
@@ -418,17 +418,17 @@ class Medium : NSObject, NSCoding{
         }
     }
 }
-class Large : NSObject, NSCoding{
+public class Large : NSObject, NSCoding{
 
-    var ext : String!
+    public var ext : String!
 //    var hash : String!
-    var height : Int!
-    var mime : String!
-    var name : String!
-    var path : AnyObject!
-    var size : Float!
-    var url : String!
-    var width : Int!
+    public var height : Int!
+    public var mime : String!
+    public var name : String!
+    public var path : AnyObject!
+    public var size : Float!
+    public var url : String!
+    public var width : Int!
 
 
     /**
@@ -485,7 +485,7 @@ class Large : NSObject, NSCoding{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public  init(coder aDecoder: NSCoder)
     {
         ext = aDecoder.decodeObject(forKey: "ext") as? String
         height = aDecoder.decodeObject(forKey: "height") as? Int
@@ -501,7 +501,7 @@ class Large : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if ext != nil{
             aCoder.encode(ext, forKey: "ext")

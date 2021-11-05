@@ -99,7 +99,7 @@ public class Store : NSObject, NSCoding, Identifiable, Codable{
      * NSCoding required initializer.
      * Fills the data from the passed decoder
      */
-    @objc required init(coder aDecoder: NSCoder)
+    @objc required public init(coder aDecoder: NSCoder)
     {
         categories = aDecoder.decodeObject(forKey: "categories") as? [String]
         cover = aDecoder.decodeObject(forKey: "cover") as? String
@@ -123,7 +123,7 @@ public class Store : NSObject, NSCoding, Identifiable, Codable{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encode(with aCoder: NSCoder)
+    @objc public func encode(with aCoder: NSCoder)
     {
         if categories != nil{
             aCoder.encode(categories, forKey: "categories")
