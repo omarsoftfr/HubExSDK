@@ -122,10 +122,23 @@ struct User: Identifiable, Codable {
 
 public struct HubEx {
     
-    let strapi = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
+    let strapiProd = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
+    let strapiDev = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
+    var strapi = Strapi(host: "")
+    
+    enum Server{
+        case prod
+        case dev
+    }
+    
+    init(_ server: Server ){
+        self.strapi =  server == Server.prod ? strapiProd :strapiDev
+    }
+    
     @State private var inputImage: UIImage?
     
     func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void) {
+//        let strapi = server ? strapiProd : strapiDev
         strapi.login(
             identifier: identifiant,
             password: motdepasse) { response in
@@ -547,10 +560,22 @@ public struct HubEx {
 public struct HubExLoginUI:View {
     @State var id:String = ""
     @State var mdp:String = ""
-    var com:(User) -> () = { _ in }
+    var com:(User) -> () = {_ in}
+    var server : HubEx.Server = .prod
     
-//    let hubEx = HubEx()
-    public init() {}
+    init(server : HubEx.Server, com: @escaping(User) -> Void){
+        self.server = server
+        self.com = com
+    }
+    init(com: @escaping(User) -> Void){
+        self.com = com
+    }
+    
+    init(server : HubEx.Server){
+        self.server = server
+    }
+    
+    public init(){}
     
     public var body: some View {
         VStack{
@@ -559,7 +584,7 @@ public struct HubExLoginUI:View {
                 TextField("Mot de passe: ", text: $mdp)
                 Button {
 //                    login(id,mdp)
-                    HubEx().login(id, mdp) { user in
+                    HubEx(server).login(id, mdp) { user in
                         print("HubEx login \(user)")
                         com(user)
                     }
