@@ -544,13 +544,13 @@ public struct HubEx {
     
 }
 
-struct HubExLoginUI:View {
+public struct HubExLoginUI:View {
     @State var id:String = ""
     @State var mdp:String = ""
     var com:(User) -> () = { _ in }
     
 //    let hubEx = HubEx()
-    
+    public init() {}
     
     public var body: some View {
         VStack{
