@@ -7,12 +7,12 @@
 
 import Foundation
 
-class Role : NSObject, NSCoding, Identifiable, Codable{
+public class Role : NSObject, NSCoding, Identifiable, Codable{
 
-    var descriptionField : String!
-    var id : Int!
-    var name : String!
-    var type : String!
+    public var descriptionField : String!
+    public var id : Int!
+    public var name : String!
+    public var type : String!
 
 
     /**

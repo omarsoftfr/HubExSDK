@@ -8,19 +8,19 @@
 import Foundation
 
 
-class DeliveryInProgress : NSObject, NSCoding, Identifiable, Codable{
+public class DeliveryInProgress : NSObject, NSCoding, Identifiable, Codable{
 
-    var adress : String!
-    var amount : Int!
-    var cancel : Bool!
-    var createdBy : String!
-    var delivery : Bool!
-    var dishes : String!
-    var id : String!
-    var publishedAt : String!
-    var returnField : String!
-    var updatedBy : String!
-    var user : String!
+    public var adress : String!
+    public var amount : Int!
+    public var cancel : Bool!
+    public var createdBy : String!
+    public var delivery : Bool!
+    public var dishes : String!
+    public var id : String!
+    public var publishedAt : String!
+    public var returnField : String!
+    public var updatedBy : String!
+    public var user : String!
 
 
     /**

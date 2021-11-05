@@ -8,12 +8,12 @@
 import Foundation
 
 
-class Format : NSObject, NSCoding{
+public class Format : NSObject, NSCoding{
 
-    var large : Large!
-    var medium : Medium!
-    var small : Small!
-    var thumbnail : Thumbnail!
+    public var large : Large!
+    public var medium : Medium!
+    public var small : Small!
+    public var thumbnail : Thumbnail!
 
 
     /**

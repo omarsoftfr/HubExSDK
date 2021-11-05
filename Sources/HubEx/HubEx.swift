@@ -5,11 +5,11 @@ import Foundation
 
 var semaphore = DispatchSemaphore (value: 0)
 
-struct Shipping: Identifiable, Codable {
-    var id: Int
-    var address: String?
-    var name: String?
-    var phone: String?
+public struct Shipping: Identifiable, Codable {
+    public var id: Int
+    public var address: String?
+    public var name: String?
+    public var phone: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,24 +20,24 @@ struct Shipping: Identifiable, Codable {
 }
 
 
-struct File: Identifiable, Codable {
-    var id: Int
-    var hash: String
-    var caption: String
-    var provider: String
-    var previewUrl: String
-    var mime: String
+public struct File: Identifiable, Codable {
+    public var id: Int
+    public var hash: String
+    public var caption: String
+    public var provider: String
+    public var previewUrl: String
+    public var mime: String
     //    var formats: Format?
-    var width: Int64
-    var height: Int64
-    var url: String
-    var created_at: String
-    var size: Double
-    var updated_at: String
-    var ext: String
-    var provider_metadata: String
-    var name: String
-    var alternativeText: String
+    public var width: Int64
+    public var height: Int64
+    public var url: String
+    public var created_at: String
+    public var size: Double
+    public var updated_at: String
+    public var ext: String
+    public var provider_metadata: String
+    public var name: String
+    public var alternativeText: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -64,28 +64,28 @@ struct File: Identifiable, Codable {
 
 public struct User: Identifiable, Codable {
     public var id: Int
-    var jwt: String
-    var firstname: String
-    var lastname: String
-    var username: String
-    var address: String?
-    var description: String?
-    var shipping:Shipping?
-    var email:String
-    var avatar:File?
-    var blocked:Bool
-    var confirmed:Bool
-    var created_at:String
-    var provider:String
-    var updated_at:String
-    var validCGU:String //date
-    var walletId:String
-    var visible:Bool
-    var location:Location?
-    var role:Role
-    var orders:[Order]
-    var deliveryInProgress:DeliveryInProgress?
-    var stores:[Store]
+    public var jwt: String
+    public var firstname: String
+    public var lastname: String
+    public var username: String
+    public var address: String?
+    public var description: String?
+    public var shipping:Shipping?
+    public var email:String
+    public var avatar:File?
+    public var blocked:Bool
+    public var confirmed:Bool
+    public var created_at:String
+    public var provider:String
+    public var updated_at:String
+    public var validCGU:String //date
+    public var walletId:String
+    public var visible:Bool
+    public var location:Location?
+    public var role:Role
+    public var orders:[Order]
+    public var deliveryInProgress:DeliveryInProgress?
+    public var stores:[Store]
     //    var metadata:[String: Any]?
     
     enum CodingKeys: String, CodingKey {

@@ -8,24 +8,24 @@
 import Foundation
 
 
-class Store : NSObject, NSCoding, Identifiable, Codable{
+public class Store : NSObject, NSCoding, Identifiable, Codable{
 
-    var categories : [String]!
-    var cover : String!
-    var createdBy : String!
-    var descriptionField : String!
-    var email : String!
-    var id : String!
-    var locale : String!
-    var localizations : [String]!
-    var logo : String!
-    var name : String!
-    var phone : String!
-    var products : [String]!
-    var publishedAt : String!
-    var updatedBy : String!
-    var useInvoices : Bool!
-    var user : String!
+    public var categories : [String]!
+    public var cover : String!
+    public var createdBy : String!
+    public var descriptionField : String!
+    public var email : String!
+    public var id : String!
+    public var locale : String!
+    public var localizations : [String]!
+    public var logo : String!
+    public var name : String!
+    public var phone : String!
+    public var products : [String]!
+    public var publishedAt : String!
+    public var updatedBy : String!
+    public var useInvoices : Bool!
+    public var user : String!
 
 
     /**

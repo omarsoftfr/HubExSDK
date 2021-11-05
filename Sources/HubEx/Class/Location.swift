@@ -8,16 +8,16 @@
 import Foundation
 
 
-class Location : NSObject, NSCoding, Identifiable, Codable{
+public class Location : NSObject, NSCoding, Identifiable, Codable{
 
-    var adress : String!
-    var createdAt : String!
-    var id : Int!
-    var latitude : Int!
-    var longitude : Int!
-    var metadata : String!
-    var publishedAt : String!
-    var updatedAt : String!
+    public var adress : String!
+    public var createdAt : String!
+    public var id : Int!
+    public var latitude : Int!
+    public var longitude : Int!
+    public var metadata : String!
+    public var publishedAt : String!
+    public var updatedAt : String!
 
 
     /**
