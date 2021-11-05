@@ -544,7 +544,7 @@ public struct HubEx {
     
 }
 
-public struct HubExLoginUI:View {
+struct HubExLoginUI:View {
     @State var id:String = ""
     @State var mdp:String = ""
     var com:(User) -> () = { _ in }
