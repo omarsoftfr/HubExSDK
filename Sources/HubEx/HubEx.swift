@@ -137,16 +137,18 @@ public struct HubEx {
     
     @State private var inputImage: UIImage?
     
-    func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void) {
+    func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void,_ error: @escaping([String: Any]?) -> Void) {
 //        let strapi = server ? strapiProd : strapiDev
         strapi.login(
             identifier: identifiant,
             password: motdepasse) { response in
             let data = response.dictionaryValue()
             guard (data?["user"]) != nil else {
+                error(data)
                 return
             }
             guard let jwt = data?["jwt"]  as? String else {
+                error(data)
                 return
             }
 
@@ -583,10 +585,12 @@ public struct HubExLoginUI:View {
                 TextField("Identifiant: ", text: $id)
                 TextField("Mot de passe: ", text: $mdp)
                 Button {
-                    HubEx(server).login(id, mdp) { user in
-                        print("HubEx login \(user)")
+                    HubEx(server).login(id, mdp, { user in
+//                        print("HubEx login \(user)")
                         com(user)
-                    }
+                    }, { error in
+                        print("HubEx error \(error)")
+                    })
                 } label: {
                     Text("Connexion")
                         .opacity(id == "" || mdp == "" ? 0.3: 1)
