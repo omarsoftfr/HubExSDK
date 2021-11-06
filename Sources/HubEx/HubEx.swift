@@ -130,6 +130,9 @@ public struct HubEx {
         case prod
         case dev
     }
+    public enum error: String {
+        case authInvalid = "Auth.form.error.invalid"
+    }
     
     public init(_ server: Server ){
         self.strapi =  server == Server.prod ? strapiProd :strapiDev
