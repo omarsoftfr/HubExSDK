@@ -131,13 +131,13 @@ public struct HubEx {
         case dev
     }
     
-    init(_ server: Server ){
+    public init(_ server: Server ){
         self.strapi =  server == Server.prod ? strapiProd :strapiDev
     }
     
     @State private var inputImage: UIImage?
     
-    func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void,_ error: @escaping([String: Any]?) -> Void) {
+    public func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void,_ error: @escaping([String: String]) -> Void) {
 //        let strapi = server ? strapiProd : strapiDev
         strapi.login(
             identifier: identifiant,
@@ -583,10 +583,12 @@ public struct HubExLoginUI:View {
     @State var id:String = ""
     @State var mdp:String = ""
     var com:(User) -> () = {_ in}
+    var error:([String:String]) -> () = {_ in}
     var server : HubEx.Server = .prod
     
-    public init(server : HubEx.Server, com: @escaping(User) -> Void){
+    public init(server : HubEx.Server, com: @escaping(User) -> Void, error: @escaping([String:String]) -> Void){
         self.server = server
+        self.error = error
         self.com = com
     }
     public init(com: @escaping(User) -> Void){
@@ -608,8 +610,9 @@ public struct HubExLoginUI:View {
                     HubEx(server).login(id, mdp, { user in
 //                        print("HubEx login \(user)")
                         com(user)
-                    }, { error in
-                        print("HubEx error \(error)")
+                    }, { e in
+//                        print("HubEx error \(error)")
+                        error(e)
                     })
                 } label: {
                     Text("Connexion")
