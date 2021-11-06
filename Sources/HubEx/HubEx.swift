@@ -153,7 +153,7 @@ public struct HubEx {
                     
                     let err = [
                         "id":errorId,
-                        "message":errorId
+                        "message":errorMessage
                     ]
                     error(err)
                 }
