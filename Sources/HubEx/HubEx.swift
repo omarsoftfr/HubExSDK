@@ -144,11 +144,31 @@ public struct HubEx {
             password: motdepasse) { response in
             let data = response.dictionaryValue()
             guard (data?["user"]) != nil else {
-                error(data)
+                
+                let d = data?["message"] as? NSArray
+                if let errorId = ((((d?[0] as? [String:Any])?["messages"]) as? NSArray)?[0] as? [String:Any])?["id"] as? String , errorId != nil, let errorMessage = ((((d?[0] as? [String:Any])?["messages"]) as? NSArray)?[0] as? [String:Any])?["message"] as? String, errorMessage != nil  {
+                    
+                    let err = [
+                        "id":errorId,
+                        "message":errorId
+                    ]
+                    error(err)
+                }
+                
                 return
             }
             guard let jwt = data?["jwt"]  as? String else {
-                error(data)
+                
+                let d = data?["message"] as? NSArray
+                if let errorId = ((((d?[0] as? [String:Any])?["messages"]) as? NSArray)?[0] as? [String:Any])?["id"] as? String , errorId != nil, let errorMessage = ((((d?[0] as? [String:Any])?["messages"]) as? NSArray)?[0] as? [String:Any])?["message"] as? String, errorMessage != nil  {
+                    
+                    let err = [
+                        "id":errorId,
+                        "message":errorId
+                    ]
+                    error(err)
+                }
+                
                 return
             }
 
