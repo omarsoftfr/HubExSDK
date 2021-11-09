@@ -116,14 +116,14 @@ public struct User: Identifiable, Codable {
     }
 }
 
-
-
+let prodURI = "cryptic-peak-06997.herokuapp.com"
+let devURI = "cryptic-peak-06997.herokuapp.com"
 
 
 public struct HubEx {
     
-    let strapiProd = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
-    let strapiDev = Strapi(scheme: .https, host: "cryptic-peak-06997.herokuapp.com")
+    let strapiProd = Strapi(scheme: .https, host: prodURI)
+    let strapiDev = Strapi(scheme: .https, host: devURI)
     var strapi = Strapi(host: "")
     
     public enum Server{
@@ -139,6 +139,11 @@ public struct HubEx {
     }
     
     @State private var inputImage: UIImage?
+    
+    //Search product by cat to my Store
+    public func getProductByCat(_ cat : String ,_ com : @escaping([String : Any]?) -> Void){
+        
+    }
     
     public func login(_ identifiant: String, _ motdepasse : String, _ com: @escaping(User) -> Void,_ error: @escaping([String: String]) -> Void) {
 //        let strapi = server ? strapiProd : strapiDev
@@ -588,21 +593,44 @@ public struct HubExLoginUI:View {
     var com:(User) -> () = {_ in}
     var error:([String:String]) -> () = {_ in}
     var server : HubEx.Server = .prod
+    var apikey : String // key store api to
     
-    public init(server : HubEx.Server, com: @escaping(User) -> Void, error: @escaping([String:String]) -> Void){
+    public init(server : HubEx.Server, _ apikey: String,  com: @escaping(User) -> Void, error: @escaping([String:String]) -> Void){
         self.server = server
+        self.apikey = apikey
         self.error = error
         self.com = com
     }
-    public init(com: @escaping(User) -> Void){
+    public init( _ apikey: String, com: @escaping(User) -> Void){
+        self.apikey = apikey
         self.com = com
     }
     
-    public init(server : HubEx.Server){
+    public init(server : HubEx.Server, _ apikey: String){
+        self.apikey = apikey
         self.server = server
     }
     
-    public init(){}
+    /// base prod and setup apikey with file config
+    public init(){
+        self.apikey = ""
+        if let filepath = Bundle.main.path(forResource: "hubexconfig", ofType: "json") {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                print("config -> \(contents)")
+                
+                //self.apikey = "" // get information apikey
+            } catch {
+                // contents could not be loaded
+                fatalError("hubexconfig.json contents could not be loaded!")
+            }
+        } else {
+            print("hubexconfig.json not found!")
+            fatalError("hubexconfig.json not found!")
+            // hubexconfig.json not found!
+        }
+        
+    }
     
     public var body: some View {
         VStack{
